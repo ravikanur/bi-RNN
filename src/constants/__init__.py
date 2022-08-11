@@ -1,11 +1,11 @@
 from src.utils import *
 from pathlib import Path
-from src import logger
+from src import logging
 
-logger()
+
 
 # GLOBAL CONSTANTS
-CONFIG_FILE_PATH = Path(f"configs/config.yaml")
+'''CONFIG_FILE_PATH = Path(f"configs/config.yaml")
 PARAMS_FILE_PATH = "params.yaml"
 ARTIFACTS_DIR_PATH = "artifacts"
 METRICS_DIR_PATH = "metrics"
@@ -61,4 +61,4 @@ _LIST_OF_DIRS = [
     DATA_DIR_PATH, 
     EVAL_DIR_PATH
 ]
-create_directories(_LIST_OF_DIRS)
+create_directories(_LIST_OF_DIRS)'''

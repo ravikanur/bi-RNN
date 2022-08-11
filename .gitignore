@@ -109,6 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+bi_RNN.egg-info/
 
 # Spyder project settings
 .spyderproject
@@ -138,6 +139,7 @@ dmypy.json
 configs/secrets.yaml
 
 # add your env folder here if its there
+~/
 
 
 

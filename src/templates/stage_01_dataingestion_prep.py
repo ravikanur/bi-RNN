@@ -1,20 +1,16 @@
-import logging
-from src.utils import save_json
+#from src.utils import save_json
 import time
-from src import logger
+from src import logging
 from src.constants import *
-from src.components import StageClass
+from src.components.Data_Ingestion_Component import DataIngestionPrep
 
 
-STAGE = "Stage name" ## <<< change stage name 
+STAGE = "Stage01_dataingestion_prep" ## <<< change stage name 
 
 # init logger
-logger()
-
-
-
 def main():
-    obj = StageClass()
+    obj = DataIngestionPrep()
+    obj.load_data()
 
 
 if __name__ == '__main__':
