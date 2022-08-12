@@ -2,6 +2,7 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 from src import logging
 from src.constants import *
+from src.utils import *
 
 class DataIngestionPrep:
     def __init__(self):
@@ -17,12 +18,20 @@ class DataIngestionPrep:
         self.test_ds = self.test_ds.batch(TRAINING_BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
         logging.info("Shuffle and batching of data is completed")
 
-    def encode_data(self):
+    def encode_traindata(self):
         self.encoder = tf.keras.layers.TextVectorization(max_tokens=TRAINING_VOCAB_SIZE)
         self.encoder.adapt(self.train_ds.map(lambda text, label : text))
         logging.info("Encoding of data is completed")
 
-    def data_embedding(self):
-        pass
+    def save_encoder(self):
+        save_bin(data=self.encoder, path=ENCODER_PATH)
+        logging.info(f"Encoder has been saved in {ENCODER_PATH}")
+
+    def save_train_test_ds(self):
+        save_bin(data=self.train_ds, path=TRAIN_DS_PATH)
+        save_bin(data=self.test_ds, path=TEST_DS_PATH)
+        logging.info(f"train and test dataset has been saved")
+
+    
 
 
