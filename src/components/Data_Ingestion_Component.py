@@ -1,6 +1,7 @@
 import tensorflow as tf
 import tensorflow_datasets as tfds
 from src import logging
+from src.constants import *
 
 class DataIngestionPrep:
     def __init__(self):
@@ -12,10 +13,14 @@ class DataIngestionPrep:
         logging.info(f"{self.dataset_name} has been downloaded")
 
     def shuffle_and_batch_data(self):
-        pass
+        self.train_ds = self.train_ds.shuffle(TRAINING_BUFFER_SIZE).batch(TRAINING_BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
+        self.test_ds = self.test_ds.batch(TRAINING_BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
+        logging.info("Shuffle and batching of data is completed")
 
     def encode_data(self):
-        pass
+        self.encoder = tf.keras.layers.TextVectorization(max_tokens=TRAINING_VOCAB_SIZE)
+        self.encoder.adapt(self.train_ds.map(lambda text, label : text))
+        logging.info("Encoding of data is completed")
 
     def data_embedding(self):
         pass
