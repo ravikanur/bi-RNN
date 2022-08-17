@@ -23,11 +23,15 @@ class DataIngestionPrep:
         self.encoder.adapt(self.train_ds.map(lambda text, label : text))
         logging.info("Encoding of data is completed")
 
-    def save_encoder(self):
+    def save_artifacts(self):
+        self._save_encoder()
+        self._save_train_test_ds()
+
+    def _save_encoder(self):
         save_bin(data=self.encoder, path=ENCODER_PATH)
         logging.info(f"Encoder has been saved in {ENCODER_PATH}")
 
-    def save_train_test_ds(self):
+    def _save_train_test_ds(self):
         save_bin(data=self.train_ds, path=TRAIN_DS_PATH)
         save_bin(data=self.test_ds, path=TEST_DS_PATH)
         logging.info(f"train and test dataset has been saved")
