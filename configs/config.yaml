@@ -16,6 +16,6 @@ source_download_dirs:
   - path_to_data_1
 
 local_data_dirs:
-  ENCODER_PATH: artifacts/encoder.bin
-  TRAIN_DS_PATH: artifacts/train_ds.bin
-  TEST_DS_PATH: artifacts/test_ds.bin
+  ENCODER_PATH: artifacts/encoder.pkl
+  TRAIN_DS_PATH: artifacts/train_ds
+  TEST_DS_PATH: artifacts/test_ds

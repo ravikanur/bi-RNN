@@ -28,13 +28,16 @@ class DataIngestionPrep:
         self._save_train_test_ds()
 
     def _save_encoder(self):
-        save_bin(data=self.encoder, path=ENCODER_PATH)
+        encoder_data = {"config": self.encoder.get_config(), "weights": self.encoder.get_weights()}
+        save_bin(data=encoder_data, path=ENCODER_PATH)
         logging.info(f"Encoder has been saved in {ENCODER_PATH}")
 
     def _save_train_test_ds(self):
-        save_bin(data=self.train_ds, path=TRAIN_DS_PATH)
-        save_bin(data=self.test_ds, path=TEST_DS_PATH)
-        logging.info(f"train and test dataset has been saved")
+        tf.data.experimental.save(self.train_ds, TRAIN_DS_PATH)
+        tf.data.experimental.save(self.test_ds, TEST_DS_PATH)
+        #save_bin(data=self.train_ds, path=TRAIN_DS_PATH)
+        #save_bin(data=self.test_ds, path=TEST_DS_PATH)
+        logging.info(f"train and test dataset has been saved in {TRAIN_DS_PATH} and {TEST_DS_PATH}")
 
     
 
