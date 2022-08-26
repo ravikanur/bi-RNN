@@ -1,8 +1,11 @@
-# add stages here 
-# stages:
-#   stage_name:
-#     cmd: python src/pipeline/stage_01______.py
-#     deps:
-#     - src/pipeline/stage_01______.py
-#     outs:
-#     - output_data_of_file_path
+#add stages here 
+stages:
+  Data_Ingestion:
+    cmd: python src/templates/stage_01_dataingestion_prep.py
+    deps:
+    - src/templates/stage_01_dataingestion_prep.py
+    - src/components/Data_Ingestion_Component.py
+    outs:
+    - artifacts/train_ds
+    - artifacts/test_ds
+    - artifacts/encoder.pkl
