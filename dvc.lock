@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  Data_Ingestion:
+    cmd: python src/templates/stage_01_dataingestion_prep.py
+    deps:
+    - path: src/components/Data_Ingestion_Component.py
+      md5: aa82a2b2d5563dbec43b3deed436a193
+      size: 1821
+    - path: src/templates/stage_01_dataingestion_prep.py
+      md5: a402c056a9c09085bb2e62eab3f08082
+      size: 713
+    outs:
+    - path: artifacts/encoder.pkl
+      md5: 7b52c698d8d4ae5c7ef45e1db49321b1
+      size: 31287
+    - path: artifacts/test_ds
+      md5: ec007dd7fbbeabdb8cf0c5ccf32e578a.dir
+      size: 32622255
+      nfiles: 3
+    - path: artifacts/train_ds
+      md5: df86b3a92c555e09c6cd9177af1f4038.dir
+      size: 33404400
+      nfiles: 3
